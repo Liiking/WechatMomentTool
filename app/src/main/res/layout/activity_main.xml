@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="请选择"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_margin="20dp"
+        android:background="@mipmap/icon_add_image"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/iv_icon"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:text="发布"/>
+
+</RelativeLayout>
