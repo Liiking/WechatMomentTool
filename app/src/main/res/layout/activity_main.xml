@@ -15,9 +15,9 @@
         android:layout_margin="20dp"
         android:background="@mipmap/icon_add_image"
         android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:scaleType="centerCrop"
+        android:layout_width="120dp"
+        android:layout_height="120dp" />
 
     <TextView
         android:id="@+id/tv_submit"

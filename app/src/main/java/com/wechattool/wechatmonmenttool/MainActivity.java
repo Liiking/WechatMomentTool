@@ -130,22 +130,29 @@ public class MainActivity extends AppCompatActivity {
      */
     public static List<ImagePiece> splitImage(Bitmap bitmap, int piece) {
         List<ImagePiece> imagePieces = new ArrayList<ImagePiece>();
+        int size = 0;// 图片尺寸
+        int offsetX = 0, offsetY = 0;// 横纵坐标偏移量（针对非1：1图片）
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
+        size = Math.min(width, height);
+        if (width > height) {
+            offsetX = (width - height) / 2;
+        } else if (height > width) {
+            offsetY = (height - width) / 2;
+        }
 
-        int pieceWidth = width / piece;
-        int pieceHeight = height / piece;
+        int pieceSize = size / piece;
 
-        for (int i = 0; i < piece; i++){
-            for (int j = 0; j < piece; j++){
+        for (int row = 0; row < piece; row++){
+            for (int col = 0;col < piece;col++){
                 ImagePiece imagePiece = new ImagePiece();
 
-                int x = j * pieceWidth;
-                int y = i * pieceHeight;
+                int x = col * pieceSize;
+                int y = row * pieceSize;
 
-                imagePiece.setBitmap(Bitmap.createBitmap(bitmap, x, y,
-                        pieceWidth, pieceHeight));
-                imagePiece.setIndex(j + i * piece);// 设置裁剪后的图片索引
+                imagePiece.setBitmap(Bitmap.createBitmap(bitmap, x + offsetX, y + offsetY,
+                        pieceSize, pieceSize));
+                imagePiece.setIndex(col + row * piece);// 设置裁剪后的图片索引
                 imagePieces.add(imagePiece);
             }
         }

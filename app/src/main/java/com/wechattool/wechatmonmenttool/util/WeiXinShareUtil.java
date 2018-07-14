@@ -35,12 +35,11 @@ public class WeiXinShareUtil {
             intent.setType("image/*");
             ArrayList<Uri> imageUris = new ArrayList<Uri>();
             for (String f : pieces) {
-                // 获取数据,通过provider方式兼容7.0
                 File file = new File(f);
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     imageUris.add(Uri.fromFile(file));
                 } else {
-                    // 修复微信在7.0崩溃的问题
+                    // 获取数据,通过provider方式兼容7.0
                     Uri uri = Uri.parse(android.provider.MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), f.substring(0, f.lastIndexOf("/")), null));
                     imageUris.add(uri);
                 }
